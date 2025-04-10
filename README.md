@@ -89,6 +89,12 @@ and then right after comes from 10.4.2.5.
 
 The big problem with this example is that you might hit IP addresses that the routes above deem as unusable but the SOCKS5 proxy might use them, so it's best to try to stay with valid IP ranges. So for the example above, instead of using a bunch of ranges, just using 10.0.0.0/9 which includes 10.0.0.0-10.127.255.255 will and using the 10.0.0.1 start and 10.127.255.254 end in the scoreproxy arguments is the best option.
 
+## Further Research
+
+It looks like `tun2socks` could be a great option to enhance this setup by not having to rely on proxychains to proxy checks or connections:
+- https://github.com/ambrop72/badvpn/tree/master/tun2socks
+- https://github.com/xjasonlyu/tun2socks
+
 ## Source references:
 - AnyIP - https://blog.widodh.nl/2016/04/anyip-bind-a-whole-subnet-to-your-linux-machine/
 - IP_FREEBIND - https://oswalt.dev/2022/02/non-local-address-binds-in-linux/
