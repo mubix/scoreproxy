@@ -28,8 +28,8 @@ jobs:
 
       - name: Tag commit
         run: |
-          git tag latest
-          git push origin latest
+          git tag -f latest
+          git push -f origin latest
 
       - name: Create Release
         uses: softprops/action-gh-release@v1
