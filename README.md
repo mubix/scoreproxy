@@ -61,7 +61,23 @@ so it should support most versions that you would want to use.
 
 ## Run the Proxy
 
-`./scoreproxy -start 10.1.0.1 -end 10.100.255.254`
+Help text:
+```
+Usage of ./scoreproxy:
+  -end string
+        End IP of the range (e.g., 10.100.255.255)
+  -port int
+        Port on which the SOCKS5 proxy will listen (default 1080)
+  -start string
+        Start IP of the range (e.g., 10.1.0.0)
+```
+
+Running: 
+```
+./scoreproxy -start 10.1.0.1 -end 10.100.255.254
+2025/04/09 23:26:16 Using IP range from 10.1.0.1 (167837697) to 10.100.255.254 (174391294)
+2025/04/09 23:26:16 Starting SOCKS5 server on 0.0.0.0:1080
+```
 
 ## Let the Proxying Begin
 
