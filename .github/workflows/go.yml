@@ -1,0 +1,35 @@
+name: Build and Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '>=1.18' # Or your desired Go version
+
+      - name: Make build script executable
+        run: chmod +x build.sh
+
+      - name: Build application
+        run: ./build.sh
+
+      - name: Tag commit
+        run: |
+          git tag latest
+          git push origin latest
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: latest
+          files: scoreproxy
