@@ -66,10 +66,13 @@ Help text:
 Usage of ./scoreproxy:
   -end string
         End IP of the range (e.g., 10.100.255.255)
+  -file string
+        File containing a list of IP addresses (one per line)
   -port int
         Port on which the SOCKS5 proxy will listen (default 1080)
   -start string
         Start IP of the range (e.g., 10.1.0.0)
+
 ```
 
 Running: 
@@ -77,6 +80,11 @@ Running:
 ./scoreproxy -start 10.1.0.1 -end 10.100.255.254
 2025/04/09 23:26:16 Using IP range from 10.1.0.1 (167837697) to 10.100.255.254 (174391294)
 2025/04/09 23:26:16 Starting SOCKS5 server on 0.0.0.0:1080
+```
+
+or via an IP list:
+```
+./scoreproxy -file iplist
 ```
 
 ## Let the Proxying Begin
