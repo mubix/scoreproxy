@@ -18,6 +18,7 @@ import (
 )
 
 var ipList []net.IP
+var localRand *rand.Rand
 
 func ipToUint32(ip net.IP) uint32 {
 	return binary.BigEndian.Uint32(ip.To4())
@@ -30,7 +31,7 @@ func uint32ToIP(n uint32) net.IP {
 }
 
 func randomIP() net.IP {
-	return ipList[rand.Intn(len(ipList))]
+	return ipList[localRand.Intn(len(ipList))]
 }
 
 func customDialer(ctx context.Context, network, addr string) (net.Conn, error) {
@@ -125,7 +126,8 @@ func main() {
 		log.Fatalf("Usage: -start and -end for IP range OR -file for list of IPs")
 	}
 
-	rand.Seed(time.Now().UnixNano())
+	source := rand.NewSource(time.Now().UnixNano())
+	localRand = rand.New(source)
 
 	conf := &socks5.Config{
 		Dial: customDialer,
