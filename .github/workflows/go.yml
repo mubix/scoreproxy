@@ -22,7 +22,9 @@ jobs:
           cache: true
 
       - name: Make build script executable
-        run: chmod +x build.sh
+        run: | 
+          chmod +x build.sh
+          go mod tidy
 
       - name: Build application
         run: ./build.sh
