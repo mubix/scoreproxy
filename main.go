@@ -181,7 +181,7 @@ func main() {
 	// Initialize Zap logger
 	// Using NewDevelopment for more verbose output during development.
 	// Replace with zap.NewProductionConfig().Build() for production.
-	logger, err := zap.NewDevelopment() // Or zap.NewProduction()
+	logger, err := zap.NewProduction() // Or zap.NewProduction()
 	if err != nil {
 		// Fallback to standard log if zap fails to initialize
 		// log.Fatalf("Failed to initialize zap logger: %v", err)
@@ -215,10 +215,7 @@ func main() {
 	default:
 		// log.Fatalf("Usage: -start and -end for IP range OR -file for list of IPs")
 		flag.Usage() // Print usage from flags
-		sugar.Fatalw("Invalid arguments: Missing IP source (range or file)",
-			"usage", "Provide -start and -end flags for an IP range, or -file flag for a list of IPs.",
-		)
-		os.Exit(1) // Ensure exit after fatal log if flag.Usage() doesn't exit
+		os.Exit(1)   // Ensure exit after fatal log if flag.Usage() doesn't exit
 	}
 
 	if len(ipList) == 0 {
