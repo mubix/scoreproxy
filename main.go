@@ -6,7 +6,6 @@ import (
 	"encoding/binary"
 	"flag"
 	"fmt"
-	"log"
 	"math/rand"
 	"net"
 	"os"
@@ -38,7 +37,6 @@ func randomIP() net.IP {
 		return net.IPv4zero
 	}
 	return ipList[localRand.Intn(len(ipList))]
-}
 }
 
 func customDialer(ctx context.Context, network, addr string) (net.Conn, error) {
@@ -141,7 +139,6 @@ func validateIPRange(startStr, endStr string) ([]net.IP, error) {
 	return ips, nil
 }
 
-
 func loadIPsFromFile(filePath string) ([]net.IP, error) {
 	file, err := os.Open(filePath)
 	if err != nil {
@@ -179,7 +176,6 @@ func loadIPsFromFile(filePath string) ([]net.IP, error) {
 	}
 	return ips, nil
 }
-
 
 func main() {
 	// Initialize Zap logger
