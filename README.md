@@ -107,3 +107,5 @@ It looks like `tun2socks` could be a great option to enhance this setup by not h
 - AnyIP - https://blog.widodh.nl/2016/04/anyip-bind-a-whole-subnet-to-your-linux-machine/
 - IP_FREEBIND - https://oswalt.dev/2022/02/non-local-address-binds-in-linux/
 - Go SOCKS5 - https://github.com/armon/go-socks5
+
+// mubix
