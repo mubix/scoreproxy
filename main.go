@@ -306,13 +306,10 @@ func main() {
 		sugar.Fatal("IP source is empty after processing flags. Cannot start proxy.")
 	}
 
-	server, err := socks5.NewServer(
+	server := socks5.NewServer(
 		socks5.WithDial(customDialer),
 		socks5.WithLogger(socks5.NewLogger(zap.NewStdLog(logger))),
 	)
-	if err != nil {
-		sugar.Fatalf("Error creating SOCKS5 server: %v", err)
-	}
 
 	listenAddr := fmt.Sprintf("0.0.0.0:%d", *portFlag)
 
